@@ -5,20 +5,20 @@ import java.util.concurrent.ThreadLocalRandom;
 public class Pi {
 
     public static AtomicLong in = new AtomicLong();
-    public static int numThreads;
-    public static int numIterations;
+    public static long numThreads;
+    public static long numIterations;
 
     public static void main(String[] args) {
 
-        if (!twoArgs(args) || !isInteger(args)) {
+        if (!twoArgs(args) || !isLong(args)) {
             System.out.println("USAGE: java Pi <numThreads> <numIterations>");
             System.exit(1);
         }
-        numThreads = Integer.parseInt(args[0]);
-        numIterations = Integer.parseInt(args[1]);
+        numThreads = Long.parseLong(args[0]);
+        numIterations = Long.parseLong(args[1]);
 
         // Create an array which will hold numThreads 
-        Thread[] ts = new Thread[numThreads];
+        Thread[] ts = new Thread[(int)numThreads];
 
         for (int j = 0; j < numThreads; j++) {
 
@@ -59,14 +59,14 @@ public class Pi {
     }
 
     /**
-     * isInteger - ensures args are a 32 bit integer
+     * isLong - ensures args are longs
      *
      * @return true if integer, false otherwise
      */
-    public static boolean isInteger(String[] args) {
+    public static boolean isLong(String[] args) {
         try {
-            Integer.parseInt(args[0]);
-            Integer.parseInt(args[1]);
+            Long.parseLong(args[0]);
+            Long.parseLong(args[1]);
             return true;
         } catch (Exception e) {
             return false;
