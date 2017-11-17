@@ -4,7 +4,7 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class Pi {
 
-    public static AtomicLong in = new AtomicLong(0);
+    public static AtomicLong in = new AtomicLong();
     public static int numThreads;
     public static int numIterations;
 
